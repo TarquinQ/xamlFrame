@@ -2,11 +2,30 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:xamlFrame"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+            <ColumnDefinition Width="8*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" HorizontalAlignment="Left" Grid.Row="0" Grid.RowSpan="2">
+            <Label FontSize="24">Testing App1</Label>
+            <fa:ImageAwesome Icon="Vcard" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <Label>
+                <fa:FontAwesome Icon="Flag" />
+            </Label>
+        </StackPanel>
+        <Image Grid.Column="1" Grid.Row="0" Source="Resources/ImagesBanners/banner_tech_cogs.jpg" Height="150" />
+        <Frame Grid.Column="1" Grid.Row="1">
+            
+        </Frame>
     </Grid>
 </Window>
