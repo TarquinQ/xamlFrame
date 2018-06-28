@@ -1,0 +1,34 @@
+﻿Aims:
+* Build a MainWindow that has a navbar on the LHS & content on the Right
+* Display an icon & app name in top-left corner
+* Display a selectable NavBar down LHS. Each Menu selection should consist of an full selectable label consisting of (icon+text)
+* Clicking on a LHS menu item should result in content being displayed in RHS.
+** LHS eleemnt should then show current-selection in some way.
+* Each RHS element should consist of a header-banner + actual-content
+
+
+* SystemTray icon should appear for this app
+* Main Window should appear in TaskBar, but minimise solely to SystemTray
+* App should have three themes - default (med.grey), light & dark. Ideally, this pref should be saved per-user, and reloaded on startup.
+
+* App should look like Fluent designs from UWP: see https://www.microsoft.com/en-us/p/xaml-controls-gallery/9msvh128x2zt for sample screenshots
+
+
+Reference Links:
+* WPF stuff:
+http://www.wpf-tutorial.com/panels/dockpanel/
+
+* Navigation:
+http://paulstovell.com/blog/wpf-navigation
+
+* Skinning:
+http://michaelscodingspot.com/2017/06/30/wpf-complete-guide-themes-skins/
+
+* Opacity:
+https://stackoverflow.com/questions/21461017/wpf-window-with-transparent-background-containing-opaque-controls
+
+* FontAwesome icons:
+https://fontawesome.com/v4.7.0/icons/#new
+
+* Other WPF:
+http://www.wpftutorial.net/DockPanel.html

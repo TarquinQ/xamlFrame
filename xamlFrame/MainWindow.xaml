@@ -1,4 +1,4 @@
-﻿<Window x:Class="xamlFrame.MainWindow"
+﻿<Window x:Name="MainDisplayWindow" x:Class="xamlFrame.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:xamlFrame"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Opacity="0.9">
+    <Window.Background>
+        <SolidColorBrush Opacity="0.8" Color="White"/>
+    </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*"></ColumnDefinition>
@@ -25,7 +28,10 @@
         </StackPanel>
         <Image Grid.Column="1" Grid.Row="0" Source="Resources/ImagesBanners/banner_tech_cogs.jpg" Height="150" />
         <Frame Grid.Column="1" Grid.Row="1">
-            
+            <Frame.Background>
+                <SolidColorBrush Opacity="0.5" Color="White"/>
+            </Frame.Background>
+
         </Frame>
     </Grid>
 </Window>
