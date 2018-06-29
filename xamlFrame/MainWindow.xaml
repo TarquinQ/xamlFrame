@@ -8,30 +8,49 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Opacity="0.9">
     <Window.Background>
-        <SolidColorBrush Opacity="0.8" Color="White"/>
+        <!-- <SolidColorBrush Opacity="0.8" Color="White"/> -->
+        <LinearGradientBrush StartPoint="0,0"
+                                 EndPoint="0,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Color="White" Offset="0.0" />
+                    <GradientStop Color="DimGray" Offset="1.0" />
+                </GradientStopCollection>
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
     </Window.Background>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*"></ColumnDefinition>
-            <ColumnDefinition Width="8*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Column="0" HorizontalAlignment="Left" Grid.Row="0" Grid.RowSpan="2">
+    <DockPanel>
+        <StackPanel HorizontalAlignment="Left" MinWidth="120" DockPanel.Dock="Left" Width="200">
             <Label FontSize="24">Testing App1</Label>
             <fa:ImageAwesome Icon="Vcard" VerticalAlignment="Center" HorizontalAlignment="Center" />
             <Label>
-                <fa:FontAwesome Icon="Flag" />
+                <DockPanel>
+                   <fa:FontAwesome Icon="BatteryThreeQuarters" FontSize="40" DockPanel.Dock="Left"/>
+                    <TextBlock VerticalAlignment="Center">Select Page 1</TextBlock>
+                </DockPanel>
             </Label>
         </StackPanel>
-        <Image Grid.Column="1" Grid.Row="0" Source="Resources/ImagesBanners/banner_tech_cogs.jpg" Height="150" />
-        <Frame Grid.Column="1" Grid.Row="1">
+        <Frame DockPanel.Dock="Right" x:Name="MainWindowNavFrame" NavigationUIVisibility="Hidden">
             <Frame.Background>
-                <SolidColorBrush Opacity="0.5" Color="White"/>
+                <SolidColorBrush Opacity="1" Color="White"/>
             </Frame.Background>
+            <Frame.Content>
+                <StackPanel>
 
+                    <Grid>
+                        <Grid.Resources>
+                            <ImageBrush x:Key="HeadingBanner" ImageSource="Resources/ImagesBanners/banner_tech_cogs.jpg" Stretch="UniformToFill" />
+                            <SolidColorBrush x:Key="brownBrush" Color="Brown" />
+                        </Grid.Resources>
+
+                        <TextBox x:Name="Heading" Background="{StaticResource HeadingBanner}" Width="592" Height="60" FontSize="36" Foreground="OrangeRed">
+                            Heading Here!
+                        </TextBox>
+                    </Grid>
+                       
+                    
+                </StackPanel>
+            </Frame.Content>
         </Frame>
-    </Grid>
+    </DockPanel>
 </Window>

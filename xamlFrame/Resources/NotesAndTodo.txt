@@ -32,3 +32,7 @@ https://fontawesome.com/v4.7.0/icons/#new
 
 * Other WPF:
 http://www.wpftutorial.net/DockPanel.html
+https://stackoverflow.com/questions/28040646/transparent-blurred-background-to-canvas
+
+* Menu Selection:
+https://www.codeproject.com/Articles/24106/Creating-an-Outlook-Navigation-Pane-by-Restyling-a
