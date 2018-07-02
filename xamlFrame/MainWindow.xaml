@@ -13,8 +13,8 @@
                                  EndPoint="0,1">
             <LinearGradientBrush.GradientStops>
                 <GradientStopCollection>
-                    <GradientStop Color="White" Offset="0.0" />
-                    <GradientStop Color="DimGray" Offset="1.0" />
+                    <GradientStop Color="LightGray" Offset="0.0" />
+                    <GradientStop Color="DimGray" Offset="0.85" />
                 </GradientStopCollection>
             </LinearGradientBrush.GradientStops>
         </LinearGradientBrush>
@@ -23,49 +23,23 @@
         <StackPanel HorizontalAlignment="Left" MinWidth="120" DockPanel.Dock="Left" Width="200">
             <Label FontSize="24" Margin="10,5,10,5">Testing App1</Label>
             <fa:ImageAwesome Icon="Vcard" HorizontalAlignment="Stretch" Margin="10,5,10,25" MaxHeight="65"/>
-            <Label HorizontalContentAlignment="Stretch">
+            <Label HorizontalContentAlignment="Stretch" x:Name="SelectPage1" MouseDown="SelectPage1_MouseDown">
                 <StackPanel Orientation="Horizontal">
                     <fa:FontAwesome Icon="BatteryThreeQuarters" FontSize="25" Width="30" HorizontalAlignment="Center" Margin="6,0,0,0"/>
-                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0">Select Page 1</TextBlock>
+                    <Label VerticalAlignment="Center" Margin="10,0,0,0">_Select Page 1</Label>
                 </StackPanel>
             </Label>
-            <Label HorizontalContentAlignment="Stretch">
+            <Label HorizontalContentAlignment="Stretch" x:Name="SelectPage2" MouseDown="SelectPage2_MouseDown">
                 <StackPanel Orientation="Horizontal">
                     <fa:FontAwesome Icon="Flask" FontSize="22" Width="30" HorizontalAlignment="Center" Margin="6,0,0,0"/>
-                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0">Select Page 2</TextBlock>
+                    <Label VerticalAlignment="Center" Margin="10,0,0,0">Select _Page 2</Label>
                 </StackPanel>
             </Label>
         </StackPanel>
-        <Frame DockPanel.Dock="Right" x:Name="MainWindowNavFrame" NavigationUIVisibility="Hidden">
+        <Frame DockPanel.Dock="Right" x:Name="MainWindowNavFrame" NavigationUIVisibility="Hidden" Source="/xamlFrame;component/Pages/Page1.xaml">
             <Frame.Background>
                 <SolidColorBrush Opacity="1" Color="White"/>
             </Frame.Background>
-            <Frame.Content>
-                <StackPanel>
-                    <StackPanel.Resources>
-                        <ImageBrush x:Key="HeadingBanner" ImageSource="Resources/ImagesBanners/banner_tech_cogs.jpg" Stretch="UniformToFill" />
-                        <SolidColorBrush x:Key="brownBrush" Color="Brown" />
-                    </StackPanel.Resources>
-
-                    <Grid Background="{StaticResource HeadingBanner}">
-                        <Label x:Name="Heading" Height="70" FontSize="36" Foreground="White" Margin="20,12,0,14" Grid.Column="0" Grid.Row="0" FontWeight="DemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Stretch">
-                            <Label.Background>
-                                <SolidColorBrush Color="Azure" Opacity="0.0" />
-                            </Label.Background>
-                            <Label.Effect>
-                                <DropShadowEffect
-                                    ShadowDepth="6"
-                                    Direction="330"
-                                    Color="Black"
-                                    Opacity="0.4"
-                                    BlurRadius="4"/>
-                            </Label.Effect>
-                            Heading Here
-                        </Label>
-                    </Grid>
-                    
-                </StackPanel>
-            </Frame.Content>
         </Frame>
     </DockPanel>
 </Window>
