@@ -20,9 +20,12 @@ namespace xamlFrame.Pages
     /// </summary>
     public partial class Page1 : Page
     {
+        private NavigationService _nav;
+
         public Page1()
         {
             InitializeComponent();
+            _nav = this.NavigationService;
         }
     }
 }

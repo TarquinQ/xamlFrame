@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:xamlFrame"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Opacity="0.9">
+        Title="MainWindow" Height="650" Width="900" Opacity="0.9">
     <Window.Background>
         <!-- <SolidColorBrush Opacity="0.8" Color="White"/> -->
         <LinearGradientBrush StartPoint="0,0"
@@ -21,13 +21,19 @@
     </Window.Background>
     <DockPanel>
         <StackPanel HorizontalAlignment="Left" MinWidth="120" DockPanel.Dock="Left" Width="200">
-            <Label FontSize="24">Testing App1</Label>
-            <fa:ImageAwesome Icon="Vcard" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            <Label>
-                <DockPanel>
-                   <fa:FontAwesome Icon="BatteryThreeQuarters" FontSize="40" DockPanel.Dock="Left"/>
-                    <TextBlock VerticalAlignment="Center">Select Page 1</TextBlock>
-                </DockPanel>
+            <Label FontSize="24" Margin="10,5,10,5">Testing App1</Label>
+            <fa:ImageAwesome Icon="Vcard" HorizontalAlignment="Stretch" Margin="10,5,10,25" MaxHeight="65"/>
+            <Label HorizontalContentAlignment="Stretch">
+                <StackPanel Orientation="Horizontal">
+                    <fa:FontAwesome Icon="BatteryThreeQuarters" FontSize="25" Width="30" HorizontalAlignment="Center" Margin="6,0,0,0"/>
+                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0">Select Page 1</TextBlock>
+                </StackPanel>
+            </Label>
+            <Label HorizontalContentAlignment="Stretch">
+                <StackPanel Orientation="Horizontal">
+                    <fa:FontAwesome Icon="Flask" FontSize="22" Width="30" HorizontalAlignment="Center" Margin="6,0,0,0"/>
+                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0">Select Page 2</TextBlock>
+                </StackPanel>
             </Label>
         </StackPanel>
         <Frame DockPanel.Dock="Right" x:Name="MainWindowNavFrame" NavigationUIVisibility="Hidden">
@@ -36,18 +42,27 @@
             </Frame.Background>
             <Frame.Content>
                 <StackPanel>
+                    <StackPanel.Resources>
+                        <ImageBrush x:Key="HeadingBanner" ImageSource="Resources/ImagesBanners/banner_tech_cogs.jpg" Stretch="UniformToFill" />
+                        <SolidColorBrush x:Key="brownBrush" Color="Brown" />
+                    </StackPanel.Resources>
 
-                    <Grid>
-                        <Grid.Resources>
-                            <ImageBrush x:Key="HeadingBanner" ImageSource="Resources/ImagesBanners/banner_tech_cogs.jpg" Stretch="UniformToFill" />
-                            <SolidColorBrush x:Key="brownBrush" Color="Brown" />
-                        </Grid.Resources>
-
-                        <TextBox x:Name="Heading" Background="{StaticResource HeadingBanner}" Width="592" Height="60" FontSize="36" Foreground="OrangeRed">
-                            Heading Here!
-                        </TextBox>
+                    <Grid Background="{StaticResource HeadingBanner}">
+                        <Label x:Name="Heading" Height="70" FontSize="36" Foreground="White" Margin="20,12,0,14" Grid.Column="0" Grid.Row="0" FontWeight="DemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Stretch">
+                            <Label.Background>
+                                <SolidColorBrush Color="Azure" Opacity="0.0" />
+                            </Label.Background>
+                            <Label.Effect>
+                                <DropShadowEffect
+                                    ShadowDepth="6"
+                                    Direction="330"
+                                    Color="Black"
+                                    Opacity="0.4"
+                                    BlurRadius="4"/>
+                            </Label.Effect>
+                            Heading Here
+                        </Label>
                     </Grid>
-                       
                     
                 </StackPanel>
             </Frame.Content>
