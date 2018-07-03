@@ -6,6 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:xamlFrame"
         xmlns:localLib="clr-namespace:xamlFrame.Lib"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="900" Opacity="0.9">
     <Window.Background>
@@ -21,24 +22,34 @@
         </LinearGradientBrush>
     </Window.Background>
     <DockPanel>
-        <StackPanel HorizontalAlignment="Left" MinWidth="120" DockPanel.Dock="Left" Width="200">
+        <DockPanel.Resources>
+            <sys:Double x:Key="WidthDock">200.0</sys:Double>
+            <sys:Double x:Key="WidthMenu">180.0</sys:Double>  <!-- DockWidth - 20; Maths in XAML is too much of a PITA for this simple instance -->
+        </DockPanel.Resources>
+        <StackPanel HorizontalAlignment="Left" MinWidth="120" DockPanel.Dock="Left" Width="{StaticResource WidthDock}">
             <Label FontSize="24" Margin="10,5,10,5">Testing App1</Label>
             <fa:ImageAwesome Icon="Vcard" HorizontalAlignment="Stretch" Margin="10,5,10,25" MaxHeight="65"/>
-            <Label HorizontalContentAlignment="Stretch" x:Name="SelectPage1" MouseDown="SelectPage1_MouseDown">
-                <StackPanel Orientation="Horizontal">
-                    <fa:FontAwesome Icon="BatteryThreeQuarters" FontSize="25" Width="30" HorizontalAlignment="Center" Margin="6,0,0,0"/>
-                    <Label VerticalAlignment="Center" Margin="10,0,0,0">_Select Page 1</Label>
-                </StackPanel>
-            </Label>
-            <Label HorizontalContentAlignment="Stretch" x:Name="SelectPage2" MouseDown="SelectPage2_MouseDown">
-                <StackPanel Orientation="Horizontal">
-                    <fa:FontAwesome Icon="Flask" FontSize="22" Width="30" HorizontalAlignment="Center" Margin="6,0,0,0"/>
-                    <Label VerticalAlignment="Center" Margin="10,0,0,0">Select _Page 2</Label>
-                </StackPanel>
-            </Label>
-            <localLib:NavigationBar>
-                <localLib:NavigationBarItem Content="Item 3" Selected="NavigationBarItem_Selected_1"></localLib:NavigationBarItem>
-                <localLib:NavigationBarItem Content="Item 4" Selected="NavigationBarItem_Selected_2"></localLib:NavigationBarItem>
+            <localLib:NavigationBar HorizontalContentAlignment="Stretch" Width="{StaticResource WidthMenu}" HorizontalAlignment="Left" Margin="0,10,0,10">
+                <localLib:NavigationBarItem Selected="NavigationBarItem_Selected_1" HorizontalContentAlignment="Stretch" Width="{StaticResource WidthMenu}" Margin="0,0,0,0">
+                    <localLib:NavigationBarItem.Content>
+                        <Label HorizontalContentAlignment="Stretch" x:Name="SelectPage1">
+                            <StackPanel Orientation="Horizontal">
+                                <fa:FontAwesome Icon="BatteryThreeQuarters" FontSize="25" Width="30" HorizontalAlignment="Center" Margin="0,0,0,0"/>
+                                <Label VerticalAlignment="Center" Margin="10,0,0,0">Select Page _1</Label>
+                            </StackPanel>
+                        </Label>
+                    </localLib:NavigationBarItem.Content>
+                </localLib:NavigationBarItem>
+                <localLib:NavigationBarItem Selected="NavigationBarItem_Selected_2" HorizontalContentAlignment="Stretch" Margin="0,0,0,0">
+                    <localLib:NavigationBarItem.Content>
+                        <Label HorizontalContentAlignment="Stretch" x:Name="SelectPage2">
+                            <StackPanel Orientation="Horizontal">
+                                <fa:FontAwesome Icon="Flask" FontSize="25" Width="30" HorizontalAlignment="Center" Margin="0,0,0,0"/>
+                                <Label VerticalAlignment="Center" Margin="10,0,0,0">Select Page _2</Label>
+                            </StackPanel>
+                        </Label>
+                    </localLib:NavigationBarItem.Content>
+                </localLib:NavigationBarItem>
             </localLib:NavigationBar>
         </StackPanel>
 

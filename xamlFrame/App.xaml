@@ -49,7 +49,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style x:Key="NavigationBarItemStyleKey" TargetType="{x:Type localLib:NavigationBarItem}"  >
+        <Style x:Key="NavigationBarItemStyleKey" TargetType="{x:Type localLib:NavigationBarItem}" >
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             <Setter Property="BorderBrush">
                 <Setter.Value>
                     <VisualBrush>
