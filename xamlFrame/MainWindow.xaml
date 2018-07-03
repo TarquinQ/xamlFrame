@@ -5,6 +5,7 @@
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:xamlFrame"
+        xmlns:localLib="clr-namespace:xamlFrame.Lib"
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="900" Opacity="0.9">
     <Window.Background>
@@ -35,7 +36,12 @@
                     <Label VerticalAlignment="Center" Margin="10,0,0,0">Select _Page 2</Label>
                 </StackPanel>
             </Label>
+            <localLib:NavigationBar>
+                <localLib:NavigationBarItem Content="Item 3" Selected="NavigationBarItem_Selected_1"></localLib:NavigationBarItem>
+                <localLib:NavigationBarItem Content="Item 4" Selected="NavigationBarItem_Selected_2"></localLib:NavigationBarItem>
+            </localLib:NavigationBar>
         </StackPanel>
+
         <Frame DockPanel.Dock="Right" x:Name="MainWindowNavFrame" NavigationUIVisibility="Hidden" Source="/xamlFrame;component/Pages/Page1.xaml">
             <Frame.Background>
                 <SolidColorBrush Opacity="1" Color="White"/>

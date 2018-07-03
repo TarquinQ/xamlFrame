@@ -36,5 +36,17 @@ namespace xamlFrame
             Uri uri = new Uri("Pages/Page2.xaml", UriKind.Relative);
             MainWindowNavFrame.NavigationService.Navigate(uri);
         }
+
+        private void NavigationBarItem_Selected_1(object sender, RoutedEventArgs e)
+        {
+            Uri uri = new Uri("Pages/Page1.xaml", UriKind.Relative);
+            MainWindowNavFrame.NavigationService.Navigate(uri);
+        }
+
+        private void NavigationBarItem_Selected_2(object sender, RoutedEventArgs e)
+        {
+            Uri uri = new Uri("Pages/Page2.xaml", UriKind.Relative);
+            MainWindowNavFrame.NavigationService.Navigate(uri);
+        }
     }
 }
