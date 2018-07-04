@@ -5,7 +5,7 @@
              xmlns:localLib="clr-namespace:xamlFrame.Lib"
              Startup="Application_Startup">
     <Application.Resources>
-        <Style TargetType="{x:Type localLib:NavigationBar}">
+        <!--<Style TargetType="{x:Type localLib:NavigationBar}">
             <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="ItemsPanel">
                 <Setter.Value>
@@ -14,70 +14,20 @@
                     </ItemsPanelTemplate>
                 </Setter.Value>
             </Setter>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type localLib:NavigationBar}">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"></RowDefinition>
-                            </Grid.RowDefinitions>
-
-                            <Border HorizontalAlignment="Left" BorderThickness="3" BorderBrush="Transparent" CornerRadius="7" Padding="2">
-                                <Grid>
-                                    <!-- Rounded mask (stretches to fill Grid) -->
-                                    <Border Name="mask" Background="White" CornerRadius="5"/>
-
-                                    <!-- Main content container -->
-                                    <StackPanel>
-                                        <!-- Use a VisualBrush of 'mask' as the opacity mask -->
-                                        <ItemsPresenter></ItemsPresenter>
-
-                                    </StackPanel>
-
-                                </Grid>
-                                <Border.Effect>
-                                    <DropShadowEffect Color="#FFcecece" Opacity="0.6" ShadowDepth="3" BlurRadius="5"/>
-                                </Border.Effect>
-
-                            </Border>
-                        </Grid>
-
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
         </Style>
+
         <Style x:Key="NavigationBarItemStyleKey" TargetType="{x:Type localLib:NavigationBarItem}" >
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True" >
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Foreground" Value="Black" />
+                </Trigger>
+            </Style.Triggers>
+            <Style.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+            </Style.Resources>
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-            <Setter Property="BorderBrush">
-                <Setter.Value>
-                    <VisualBrush>
-                        <VisualBrush.Visual>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-
-                                <Path x:Name="ColoredBorderLeft" SnapsToDevicePixels="True"
-                                Data="M0,0 L0,0 1,0.5 L1,0.5 0,1" Fill="#FF929292" Stretch="Fill" Grid.RowSpan="2"/>
-                                <Path x:Name="ColoredBorderRight" SnapsToDevicePixels="True"
-                                Data="M1,0 L1,0 0,0.5 L0,0.5 1,1" Fill="#FF5d5d5d" Stretch="Fill" Grid.Column="1" Grid.RowSpan="2"/>
-                                <Path x:Name="ColoredBorderTop" SnapsToDevicePixels="True"
-                                Data="M0,0 L0,0 0.5,1 L0.5,1 1,0" Fill="#FF797979" Stretch="Fill" Grid.ColumnSpan="2"/>
-                                <Path x:Name="ColoredBorderBottom" SnapsToDevicePixels="True"
-                                Data="M0,1 L0,1 0.5,0 L0.5,0 1,1" Fill="#FF575757" Stretch="Fill" Grid.Row="1" Grid.ColumnSpan="2"/>
-                            </Grid>
-                        </VisualBrush.Visual>
-                    </VisualBrush>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        </Style>-->
     </Application.Resources>
 </Application>

@@ -16,13 +16,11 @@ using System.Windows.Shapes;
 namespace xamlFrame.Pages
 {
     /// <summary>
-    /// Interaction logic for Page2.xaml
+    /// Interaction logic for pageQuickLinks.xaml
     /// </summary>
-    public partial class Page2 : Page
+    public partial class pageQuickLinks : Page
     {
-        private NavigationService _nav;
-
-        public Page2()
+        public pageQuickLinks()
         {
             InitializeComponent();
         }

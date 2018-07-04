@@ -16,15 +16,16 @@ using System.Windows.Shapes;
 namespace xamlFrame.Pages
 {
     /// <summary>
-    /// Interaction logic for Page2.xaml
+    /// Interaction logic for Page3.xaml
     /// </summary>
-    public partial class Page2 : Page
+    public partial class pageMachineInfo : Page
     {
         private NavigationService _nav;
 
-        public Page2()
+        public pageMachineInfo()
         {
             InitializeComponent();
+            _nav = this.NavigationService;
         }
     }
 }

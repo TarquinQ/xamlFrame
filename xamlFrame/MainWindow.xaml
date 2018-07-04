@@ -26,11 +26,23 @@
             <sys:Double x:Key="WidthDock">200.0</sys:Double>
             <sys:Double x:Key="WidthMenu">180.0</sys:Double>  <!-- DockWidth - 20; Maths in XAML is too much of a PITA for this simple instance -->
         </DockPanel.Resources>
-        <StackPanel HorizontalAlignment="Left" MinWidth="120" DockPanel.Dock="Left" Width="{StaticResource WidthDock}">
+        <StackPanel HorizontalAlignment="Left" MinWidth="120" DockPanel.Dock="Left" Width="{StaticResource WidthDock}" Background="Transparent">
             <Label FontSize="24" Margin="10,5,10,5">Testing App1</Label>
             <fa:ImageAwesome Icon="Vcard" HorizontalAlignment="Stretch" Margin="10,5,10,25" MaxHeight="65"/>
-            <localLib:NavigationBar HorizontalContentAlignment="Stretch" Width="{StaticResource WidthMenu}" HorizontalAlignment="Left" Margin="0,10,0,10">
-                <localLib:NavigationBarItem Selected="NavigationBarItem_Selected_1" HorizontalContentAlignment="Stretch" Width="{StaticResource WidthMenu}" Margin="0,0,0,0">
+            <localLib:NavigationBar HorizontalContentAlignment="Stretch" Width="{StaticResource WidthDock}" HorizontalAlignment="Left" Margin="0,10,0,10"  Background="Transparent">
+                <localLib:NavigationBarItem Selected="NavigationBarItem_Selected_1" HorizontalContentAlignment="Stretch" Margin="0,0,0,0">
+                    <localLib:NavigationBarItem.Content>
+                        <Grid Margin="5,10,5,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <fa:FontAwesome Icon="BatteryThreeQuarters" FontSize="25" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Column="0"/>
+                            <Label VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1">Select Page _1</Label>
+                        </Grid>
+                    </localLib:NavigationBarItem.Content>
+                </localLib:NavigationBarItem>
+                <localLib:NavigationBarItem Selected="NavigationBarItem_Selected_1" HorizontalContentAlignment="Stretch" Margin="0,0,0,0">
                     <localLib:NavigationBarItem.Content>
                         <Label HorizontalContentAlignment="Stretch" x:Name="SelectPage1">
                             <StackPanel Orientation="Horizontal">

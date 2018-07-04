@@ -10,10 +10,10 @@ namespace xamlFrame.Lib
 {
     class NavigationBar : ListBox
     {
-        static NavigationBar()
-        {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(NavigationBar), new FrameworkPropertyMetadata(typeof(NavigationBar)));
-        }
+        //static NavigationBar()
+        //{
+        //    DefaultStyleKeyProperty.OverrideMetadata(typeof(NavigationBar), new FrameworkPropertyMetadata(typeof(NavigationBar)));
+        //}
     }
 
     class NavigationBarItem : ListBoxItem
