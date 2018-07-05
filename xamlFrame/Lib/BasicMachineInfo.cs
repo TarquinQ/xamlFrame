@@ -20,24 +20,19 @@ namespace xamlFrame.Lib
         //public ? WindowsExperience Rating -- Get-WmiObject -class Win32_WinSAT
         // * Primary IPv4 (w/ Default Route)
         // * Primary IPv6 (w/ Default Route)
+        private readonly GetLocalCIMData CIMDataProvider;
 
         public BasicMachineInfo()
         {
-            ManagementScope manScope = new ManagementScope(@"\\.\root\cimv2");
+            CIMDataProvider = new GetLocalCIMData();
+            string QueryString = "Select * from Win32_ComputerSystem";
 
-            // define the information we want to query - in this case, just grab all properties of the object
-            ObjectQuery queryObj = new ObjectQuery("SELECT * FROM Win32_ComputerSystem");
-
-            // connect and set up our search
-            ManagementObjectSearcher Searcher = new ManagementObjectSearcher(manScope, queryObj);
-            ManagementObjectCollection wmiResults = Searcher.Get();
-
-            foreach (ManagementObject result in wmiResults)
+            foreach (var result in CIMDataProvider.GetDataFromQuery(QueryString))
             {
-                this.CurrUserName = "";
-                this.Manufacturer = result["Manufacturer"].ToString();
-                this.Model = result["Model"].ToString();
-                this.RAMTotal = ((Int32)(result["TotalPhysicalMemory"]))/1024/1024 ;
+                CurrUserName = "";
+                Manufacturer = result.CimInstanceProperties["Manufacturer"].ToString();
+                Model = result.CimInstanceProperties["Model"].ToString();
+                RAMTotal = ((Int32)(result.CimInstanceProperties["TotalPhysicalMemory"].ToString()))/1024/1024 ;
             }
         }
     }
