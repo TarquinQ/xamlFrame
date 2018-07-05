@@ -31,5 +31,16 @@ namespace xamlFrame.Lib
             return mySession.GetClass(namespaceName: Namespace, className: ClassName);
         }
 
+        public IEnumerable<CimInstance> GetEnumeratedInstances(string ClassName)
+        {
+            return GetEnumeratedInstances(ClassName, DefaultNamepace);
+        }
+
+        public IEnumerable<CimInstance> GetEnumeratedInstances(string ClassName, string Namespace)
+        {
+            CimSession mySession = CimSession.Create(LocalComputer);
+            return mySession.EnumerateInstances(namespaceName: Namespace, className: ClassName);
+        }
+
     }
 }
