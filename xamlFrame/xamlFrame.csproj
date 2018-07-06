@@ -74,6 +74,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Lib\BasicMachineInfo.cs" />
+    <Compile Include="Lib\CIMExtensions.cs" />
     <Compile Include="Lib\GetLocalCIMData.cs" />
     <Compile Include="Lib\NavigationBar.cs" />
     <Compile Include="MainWindow.xaml.cs">

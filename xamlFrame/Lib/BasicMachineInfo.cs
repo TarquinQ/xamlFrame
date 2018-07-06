@@ -11,6 +11,7 @@ namespace xamlFrame.Lib
     class BasicMachineInfo
     {
         public string MachineName { get; }
+        public string CurrUserNameFull { get; }
         public string CurrUserName { get; }
         public string CurrUserDomain { get; }
         public string Manufacturer { get; }
@@ -27,16 +28,19 @@ namespace xamlFrame.Lib
         {
             CIMDataProvider = new GetLocalCIMData();
 
-            string QueryString = "Select * from Win32_ComputerSystem";
-            using (var result = CIMDataProvider.GetDataFromQuery(QueryString).First())
-            {
-                Manufacturer = result.CimInstanceProperties["Manufacturer"].Value.ToString();
-                Model = result.CimInstanceProperties["Model"].Value.ToString();
-                int RAMTotalKB = int.Parse(result.CimInstanceProperties["TotalPhysicalMemory"].Value.ToString());
-                RAMTotalGB = RAMTotalKB / 1024 / 1024;
-            }
+            // string QueryString = "Select * from Win32_ComputerSystem";
+            // CIMDataProvider.GetDataFromQuery(QueryString, out var result);
+            string cimClassName = "Win32_ComputerSystem";
+            CIMDataProvider.GetEnumeratedInstances(className: cimClassName, firstInstance: out var result);
+
+            Manufacturer = result.CimInstanceProperties["Manufacturer"].Value.ToString();
+            Model = result.CimInstanceProperties["Model"].Value.ToString();
+            int RAMTotalKB = result.CimInstanceProperties["TotalPhysicalMemory"].Value<int>();
+            RAMTotalGB = RAMTotalKB / 1024 / 1024;
+            CurrUserNameFull = Environment.UserName; // domain\username
             CurrUserDomain = Environment.UserDomainName;
-            CurrUserName = Environment.UserName.Remove(0, (CurrUserDomain.Length+1)); // domain\username
+            CurrUserName = Environment.UserName.Remove(0, (CurrUserDomain.Length+1));
         }
     }
 }
+
