@@ -25,15 +25,15 @@ namespace xamlFrame
             InitializeComponent();
         }
 
-        private void SelectPage1_MouseDown(object sender, MouseButtonEventArgs e)
+        private void NavigationBarItem_Selected_QuickLinks(object sender, RoutedEventArgs e)
         {
-            Uri uri = new Uri("Pages/Page1.xaml", UriKind.Relative);
+            Uri uri = new Uri("Pages/pageQuickLinks.xaml", UriKind.Relative);
             MainWindowNavFrame.NavigationService.Navigate(uri);
         }
 
-        private void SelectPage2_MouseDown(object sender, MouseButtonEventArgs e)
+        private void NavigationBarItem_Selected_MachineInfo(object sender, RoutedEventArgs e)
         {
-            Uri uri = new Uri("Pages/Page2.xaml", UriKind.Relative);
+            Uri uri = new Uri("Pages/pageMachineInfo.xaml", UriKind.Relative);
             MainWindowNavFrame.NavigationService.Navigate(uri);
         }
 

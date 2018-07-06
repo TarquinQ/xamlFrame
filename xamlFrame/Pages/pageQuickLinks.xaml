@@ -4,18 +4,79 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:xamlFrame.Pages"
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="pageQuickLinks">
 
-    <Grid>
+    <StackPanel>
+        <StackPanel.Resources>
+            <ImageBrush x:Key="HeadingBanner" ImageSource="/xamlFrame;component/Resources/ImagesBanners/banner_books.jpg" Stretch="UniformToFill" />
+            <SolidColorBrush x:Key="brownBrush" Color="Brown" />
+        </StackPanel.Resources>
 
-<!--
+        <Grid Background="{StaticResource HeadingBanner}">
+            <Label x:Name="Heading" Height="70" FontSize="36" Foreground="White" Margin="20,12,0,14" Grid.Column="0" Grid.Row="0" FontWeight="DemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Stretch">
+                <Label.Background>
+                    <SolidColorBrush Color="Azure" Opacity="0.0" />
+                </Label.Background>
+                <Label.Effect>
+                    <DropShadowEffect
+                                    ShadowDepth="6"
+                                    Direction="330"
+                                    Color="Black"
+                                    Opacity="0.4"
+                                    BlurRadius="4"/>
+                </Label.Effect>
+                QuickLinks
+            </Label>
+        </Grid>
+
+        <WrapPanel>
+            <WrapPanel.Resources>
+                <ControlTemplate x:Key="SquareButton" TargetType="{x:Type Button}">
+                    <Border CornerRadius="0" />
+                </ControlTemplate>
+            </WrapPanel.Resources>
+            <Button Padding="15" Margin="25,20,25,20">
+                <StackPanel Margin="5,5,5,5">
+                    <fa:FontAwesome Icon="BarChart" FontSize="36"/>
+                    <Label Content="QuickiLnk1" />
+                </StackPanel>
+            </Button>
+            <Button Padding="15" Margin="25,20,25,20">
+                <StackPanel Margin="5,5,5,5">
+                    <fa:FontAwesome Icon="Dollar" FontSize="36"/>
+                    <Label Content="QuickLink2" />
+                </StackPanel>
+            </Button>
+            <Button Padding="15" Margin="25,20,25,20">
+                <StackPanel Margin="5,5,5,5">
+                    <fa:FontAwesome Icon="BarChart" FontSize="36"/>
+                    <Label Content="QuickiLnk3" />
+                </StackPanel>
+            </Button>
+            <Button Padding="15" Margin="25,20,25,20">
+                <StackPanel Margin="5,5,5,5">
+                    <fa:FontAwesome Icon="BarChart" FontSize="36"/>
+                    <Label Content="QuickiLnk4" />
+                </StackPanel>
+            </Button>
+            <Button Padding="15" Margin="25,20,25,20">
+                <StackPanel Margin="5,5,5,5">
+                    <fa:FontAwesome Icon="BarChart" FontSize="36"/>
+                    <Label Content="QuickiLnk5" />
+                </StackPanel>
+            </Button>
+        </WrapPanel>
+
+    </StackPanel>
+
+    <!--
         Grid of Apps - Or probably WrapPanel.
         To do the following:
         * Launch Web Link in Default Browser
         * Launch Another Web Link in Default Browser
         * Launch Another Windows App
         -->        
-    </Grid>
 </Page>
