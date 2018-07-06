@@ -16,6 +16,7 @@ namespace xamlFrame.Lib
         public string CurrUserDomain { get; }
         public string Manufacturer { get; }
         public string Model { get; }
+        public string MachineSerial { get; }
         public string OSVersion { get; }
         public string OSRevision { get; }
         public int RAMTotalGB { get; }
@@ -28,8 +29,11 @@ namespace xamlFrame.Lib
         {
             CIMDataProvider = new GetLocalCIMData();
 
-            // string QueryString = "Select * from Win32_ComputerSystem";
-            // CIMDataProvider.GetDataFromQuery(QueryString, out var result);
+            MachineName = Environment.MachineName;
+            CurrUserNameFull = Environment.UserName; // domain\username
+            CurrUserDomain = Environment.UserDomainName;
+            CurrUserName = Environment.UserName.Remove(0, (CurrUserDomain.Length + 1));
+
             string cimClassName = "Win32_ComputerSystem";
             CIMDataProvider.GetEnumeratedInstances(className: cimClassName, firstInstance: out var result);
 
@@ -37,9 +41,10 @@ namespace xamlFrame.Lib
             Model = result.CimInstanceProperties["Model"].Value.ToString();
             int RAMTotalKB = result.CimInstanceProperties["TotalPhysicalMemory"].Value<int>();
             RAMTotalGB = RAMTotalKB / 1024 / 1024;
-            CurrUserNameFull = Environment.UserName; // domain\username
-            CurrUserDomain = Environment.UserDomainName;
-            CurrUserName = Environment.UserName.Remove(0, (CurrUserDomain.Length+1));
+
+            cimClassName = "Win32_Bios";
+            CIMDataProvider.GetEnumeratedInstances(className: cimClassName, firstInstance: out result);
+            MachineSerial = result.CimInstanceProperties["SerialNumber"].Value.ToString();
         }
     }
 }

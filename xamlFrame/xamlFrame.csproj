@@ -89,11 +89,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\pageMachineInfo.xaml">
+    <Page Include="Pages\PageMachineInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\pageQuickLinks.xaml">
+    <Page Include="Pages\PageQuickLinks.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -105,11 +105,11 @@
     <Compile Include="Pages\Page2.xaml.cs">
       <DependentUpon>Page2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\pageMachineInfo.xaml.cs">
-      <DependentUpon>pageMachineInfo.xaml</DependentUpon>
+    <Compile Include="Pages\PageMachineInfo.xaml.cs">
+      <DependentUpon>PageMachineInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\pageQuickLinks.xaml.cs">
-      <DependentUpon>pageQuickLinks.xaml</DependentUpon>
+    <Compile Include="Pages\PageQuickLinks.xaml.cs">
+      <DependentUpon>PageQuickLinks.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

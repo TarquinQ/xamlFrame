@@ -18,9 +18,9 @@ namespace xamlFrame.Pages
     /// <summary>
     /// Interaction logic for pageQuickLinks.xaml
     /// </summary>
-    public partial class pageQuickLinks : Page
+    public partial class PageQuickLinks : Page
     {
-        public pageQuickLinks()
+        public PageQuickLinks()
         {
             InitializeComponent();
         }

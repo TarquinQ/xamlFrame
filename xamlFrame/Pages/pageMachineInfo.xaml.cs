@@ -12,20 +12,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using xamlFrame.Lib;
 
 namespace xamlFrame.Pages
 {
     /// <summary>
     /// Interaction logic for Page3.xaml
     /// </summary>
-    public partial class pageMachineInfo : Page
+    public partial class PageMachineInfo : Page
     {
         private NavigationService _nav;
 
-        public pageMachineInfo()
+        public PageMachineInfo()
         {
             InitializeComponent();
             _nav = this.NavigationService;
+            var basicMachineInfo = new BasicMachineInfo();
+            this.DataContext = basicMachineInfo;
         }
     }
 }
