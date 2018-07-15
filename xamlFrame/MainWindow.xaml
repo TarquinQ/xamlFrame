@@ -5,7 +5,7 @@
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:xamlFrame"
-        xmlns:localLib="clr-namespace:xamlFrame.Lib"
+        xmlns:localLib="clr-namespace:xamlFrame.Lib.Xaml"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="900" Opacity="0.9">

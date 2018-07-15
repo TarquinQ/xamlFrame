@@ -51,14 +51,14 @@
                 <ColumnDefinition Width = "200" />
             </Grid.ColumnDefinitions>
 
-            <Label Name = "nameLabel" Margin = "2">_Machine Name:</Label>
-            <TextBox Name = "nameText" Grid.Column = "1" Margin = "2" Text = "{Binding MachineName, Mode=OneWay}" VerticalAlignment="Center" BorderThickness="0" IsReadOnly="True"/>
+            <Label Name = "LabelMachineName" Margin = "2">_Machine Name:</Label>
+            <TextBox Name = "TextMachineName" Grid.Column = "1" Margin = "2" Text = "{Binding MachineName, Mode=OneWay}" VerticalAlignment="Center" BorderThickness="0" IsReadOnly="True"/>
 
-            <Label Name = "ageLabel" Margin = "2" Grid.Row = "1">_User Logon Name:</Label>
-            <TextBox Name = "ageText" Grid.Column = "1" Grid.Row = "1" Margin = "2" Text = "{Binding CurrUserNameFull, Mode=OneWay}" VerticalAlignment="Center" BorderThickness="0" IsReadOnly="True"/>
+            <Label Name = "LabelModel" Margin = "2" Grid.Row = "1">Model:</Label>
+            <TextBox Name = "TextModel" Grid.Column = "1" Grid.Row = "1" Margin = "2" Text = "{Binding Model, Mode=OneWay}" VerticalAlignment="Center" BorderThickness="0" IsReadOnly="True"/>
 
-            <Label Name = "LabelModel" Margin = "2" Grid.Row="2">Model:</Label>
-            <TextBox Name = "TextModel" Grid.Column = "1"  Grid.Row="2" Margin = "2" Text = "{Binding Model, Mode=OneWay}" VerticalAlignment="Center" BorderThickness="0" IsReadOnly="True"/>
+            <Label Name = "LabelSerial" Margin = "2" Grid.Row="2">Serial Number:</Label>
+            <TextBox Name = "TextSerial" Grid.Column = "1"  Grid.Row="2" Margin = "2" Text = "{Binding Serial, Mode=OneWay}" VerticalAlignment="Center" BorderThickness="0" IsReadOnly="True"/>
             
 
 

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using xamlFrame.Lib;
+using xamlFrame.Lib.System;
 
 namespace xamlFrame.Pages
 {

@@ -5,16 +5,65 @@
 * Clicking on a LHS menu item should result in content being displayed in RHS.
 ** LHS eleemnt should then show current-selection in some way.
 * Each RHS element should consist of a header-banner + actual-content
+* App should look like Fluent designs from UWP: see https://www.microsoft.com/en-us/p/xaml-controls-gallery/9msvh128x2zt for sample screenshots
 
-
+App Behaviour:
 * SystemTray icon should appear for this app
 * Main Window should appear in TaskBar, but minimise solely to SystemTray
-* App should have three themes - default (med.grey), light & dark. Ideally, this pref should be saved per-user, and reloaded on startup.
+* App should have three themes - default (med.grey), light & dark. Ideally, this pref should be saved per-user, and reloaded on startup. This is completely optional.
+* App should have concurrent threads (triggered either at startup or by button-press) that pop up Toast notifications.
+** These toasts should have buttons should that do something.. but that may does not neccesarily require it to come back to main window.
 
-* App should look like Fluent designs from UWP: see https://www.microsoft.com/en-us/p/xaml-controls-gallery/9msvh128x2zt for sample screenshots
+Pages:
+* Page 0: QuickLinks to things (web pages etc)
+* Page 1: Basic User & Machine Info (names, model, serial, etc)
+* Page 2: Machine Health
+* Page 3: No idea yet
+
+Health Page:
+* Machine should get score x/10 (+ progress bar?)
+** Disk space (SystemDrive): 2 points: <5GB free 0pts, 10GB free 1pt, 20GB free 2pts
+** A/V Status: 1 point: Switched on & defns up-to-date
+** Patches: 3 pts: 1 point if lastChecked < 7 days, 1 point if installed < 2 months, 1 point if oldestOutstanding < 2 months
+** Reliability: 1 point: 1 point if reliability rating above x (low thresh.) for prev 3 months
+** Battery Health: 1 point: Laptops: FullChargedCharge < 60% of Design Capacity  (Desktops: 1 point always)
+** 2 points reserved
+
+Not in score:
+** Performance: Windows Rating
+** Event Logs: Application crashes per hour?  Bad sectors, controller errors?
+** Disk Drives: SMART rating?
+
+
+* Critical things should be be flagged: <5GB space, AV off, old patches needed
+* Charts: disk space, CPU usage, etc
+
+
+Battery Charge PS1:
+   $fullchargecapacity = (Get-WmiObject -Class "BatteryFullChargedCapacity" -Namespace "ROOT\WMI").FullChargedCapacity 
+    $designcapacity = (Get-WmiObject -Class "BatteryStaticData" -Namespace "ROOT\WMI").DesignedCapacity 
+ 
+    if ($fullchargecapacity -eq $designcapacity) { 
+        Write-Host "Your system doesn't seem capable of providing accurate battery information`n" -ForegroundColor black -BackgroundColor red 
+        Exit 1 
+    } 
+ 
+    $batteryhealth = ($fullchargecapacity / $designcapacity) * 100 
+    if ($batteryhealth -gt 100) {$batteryhealth = 100} 
+    return [decimal]::round($batteryhealth)  
 
 
 Reference Links:
+* Reliability MOnitor:
+https://technet.microsoft.com/en-us/library/dd535685.aspx
+PS: get-wmiobject Win32_ReliabilityStabilityMetrics -property @("SystemStabilityIndex")
+https://4sysops.com/archives/monitoring-windows-system-stability-with-powershell/
+https://hazzy.techanarchy.net/posh/powershell/windows-reliability-yeah-right/
+
+* SMART:
+https://www.computerworld.com/article/2846009/the-5-smart-stats-that-actually-predict-hard-drive-failure.html
+
+
 * WPF stuff:
 http://www.wpf-tutorial.com/panels/dockpanel/
 

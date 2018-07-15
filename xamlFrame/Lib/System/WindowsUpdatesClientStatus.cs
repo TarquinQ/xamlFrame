@@ -6,18 +6,18 @@ using System.Text;
 using System.Threading.Tasks;
 using WUApiLib;
 
-namespace xamlFrame.Lib
+namespace xamlFrame.Lib.System
 {
     class InstalledUpdate
     {
+        public string Title { get; set; }
+        public DateTime InstalledDate { get; set; }
+
         public InstalledUpdate(string Title, DateTime InstalledDate)
         {
             this.Title = Title;
             this.InstalledDate = InstalledDate;
         }
-
-        public string Title { get; set; }
-        public DateTime InstalledDate { get; set; }
     }
 
     class WindowsUpdatesClientStatus
@@ -25,8 +25,8 @@ namespace xamlFrame.Lib
         public WindowsUpdatesClientStatus(bool enabled,
             bool rebootRequired,
             List<InstalledUpdate> installedUpdates,
-            DateTime? lastSearchSuccess,
-            DateTime? lastInstallationSuccess,
+            DateTime lastSearchSuccess,
+            DateTime lastInstallationSuccess,
             int countOutstanding,
             DateTime oldestOutstanding)
         {
@@ -42,8 +42,8 @@ namespace xamlFrame.Lib
         public bool Enabled { get; }
         public bool RebootRequired { get; }
         public List<InstalledUpdate> InstalledUpdates { get; }
-        public DateTime? LastSearchSuccess { get; }
-        public DateTime? LastInstallationSuccess { get; }
+        public DateTime LastSearchSuccess { get; }
+        public DateTime LastInstallationSuccess { get; }
         public int CountOutstanding { get; }
         public DateTime OldestOutstanding { get; }
     }
@@ -53,7 +53,7 @@ namespace xamlFrame.Lib
         public WindowsUpdatesClientStatus GetInfoSummary(bool online = false)
         {
             List<InstalledUpdate> installedUpdates = GetInstalledUpdates();
-            Tuple<DateTime?, DateTime?> lastSearchAndInstall = GetDatesLastSearchAndInstall();
+            Tuple<DateTime, DateTime> lastSearchAndInstall = GetDatesLastSearchAndInstall();
             Tuple<int, DateTime, List<IUpdate>> outstandingUpdates = GetOutstandingUpdates(online: online);
             return new WindowsUpdatesClientStatus(
                 enabled: IsWindowsUpdateEnabled(),
@@ -143,19 +143,19 @@ namespace xamlFrame.Lib
             return new Tuple<int, DateTime, List<IUpdate>>(countRequired, oldestUpdate, updates);
         }
 
-        public Tuple<DateTime?,DateTime?> GetDatesLastSearchAndInstall()
+        public Tuple<DateTime,DateTime> GetDatesLastSearchAndInstall()
         {
             var auc = new AutomaticUpdates();
 
-            DateTime? lastInstallationSuccessDateUtc = null;
+            DateTime lastInstallationSuccessDateUtc = new DateTime(1970,1,1);
             if (auc.Results.LastInstallationSuccessDate is DateTime)
                 lastInstallationSuccessDateUtc = new DateTime(((DateTime)auc.Results.LastInstallationSuccessDate).Ticks, DateTimeKind.Utc);
 
-            DateTime? lastSearchSuccessDateUtc = null;
+            DateTime lastSearchSuccessDateUtc = new DateTime(1970, 1, 1);
             if (auc.Results.LastSearchSuccessDate is DateTime)
                 lastSearchSuccessDateUtc = new DateTime(((DateTime)auc.Results.LastSearchSuccessDate).Ticks, DateTimeKind.Utc);
 
-            return new Tuple<DateTime?, DateTime?>(lastSearchSuccessDateUtc, lastInstallationSuccessDateUtc);
+            return new Tuple<DateTime, DateTime>(lastSearchSuccessDateUtc, lastInstallationSuccessDateUtc);
         }
     }
 }

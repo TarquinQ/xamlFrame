@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Management.Infrastructure;
+using xamlFrame.Lib.Extensions;
 
-namespace xamlFrame.Lib
+namespace xamlFrame.Lib.System
 {
-    class GetLocalCIMData
+    class CIMLocalhostProxy
     {
-        public static readonly string LocalComputer = "localhost";
+        public static readonly string LocalComputer = null;
         public static readonly string DefaultCIMNamespace = @"root\cimv2";
 
         public CimClass GetClass(string className)

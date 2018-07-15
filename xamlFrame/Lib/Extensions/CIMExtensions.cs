@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Management.Infrastructure;
 
-namespace xamlFrame.Lib
+namespace xamlFrame.Lib.Extensions
 {
     /// <summary>
     /// This class extends the system CIM methods, to allow easier retrieval of correctly-typed values

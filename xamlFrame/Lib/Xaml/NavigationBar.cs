@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace xamlFrame.Lib
+namespace xamlFrame.Lib.Xaml
 {
     class NavigationBar : ListBox
     {

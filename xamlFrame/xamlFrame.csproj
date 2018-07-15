@@ -56,6 +56,12 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="ToastNotifications, Version=2.2.5.0, Culture=neutral, PublicKeyToken=e89d9d7314a7c797, processorArchitecture=MSIL">
+      <HintPath>..\packages\ToastNotifications.2.2.5\lib\net40\ToastNotifications.dll</HintPath>
+    </Reference>
+    <Reference Include="ToastNotifications.Messages, Version=2.2.5.0, Culture=neutral, PublicKeyToken=e89d9d7314a7c797, processorArchitecture=MSIL">
+      <HintPath>..\packages\ToastNotifications.Messages.2.2.5\lib\net40\ToastNotifications.Messages.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -73,11 +79,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Lib\BasicMachineInfo.cs" />
-    <Compile Include="Lib\CIMExtensions.cs" />
-    <Compile Include="Lib\GetLocalCIMData.cs" />
-    <Compile Include="Lib\NavigationBar.cs" />
-    <Compile Include="Lib\WindowsUpdatesClientStatus.cs" />
+    <Compile Include="Lib\System\BasicMachineInfo.cs" />
+    <Compile Include="Lib\Extensions\CIMExtensions.cs" />
+    <Compile Include="Lib\System\BasicUserInfo.cs" />
+    <Compile Include="Lib\System\CIMLocalhostProxy.cs" />
+    <Compile Include="Lib\System\MachineHealth.cs" />
+    <Compile Include="Lib\Xaml\NavigationBar.cs" />
+    <Compile Include="Lib\System\WindowsSecurityCenterStatus.cs" />
+    <Compile Include="Lib\System\WindowsUpdatesClientStatus.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

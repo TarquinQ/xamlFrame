@@ -8,14 +8,12 @@ using System.Management;
 using System.IO;
 using Microsoft.Management.Infrastructure;
 using Microsoft.Win32;
+using xamlFrame.Lib.Extensions;
 
-namespace xamlFrame.Lib
+namespace xamlFrame.Lib.System
 {
     class BasicMachineInfo
     {
-        public string CurrUserNameFull { get; }
-        public string CurrUserName { get; }
-        public string CurrUserDomain { get; }
         public string MachineName { get; }
         public string Manufacturer { get; }
         public string Model { get; }
@@ -39,18 +37,15 @@ namespace xamlFrame.Lib
         // * Primary IPv4 (w/ Default Route)
         // * Primary IPv6 (w/ Default Route)
 
-        private readonly GetLocalCIMData CIMDataProvider;
+        private readonly CIMLocalhostProxy CIMDataProvider;
 
         public BasicMachineInfo()
         {
-            CIMDataProvider = new GetLocalCIMData();
+            CIMDataProvider = new CIMLocalhostProxy();
             string cimClassName;
             CimInstance result;
 
             MachineName = Environment.MachineName;
-            CurrUserNameFull = Environment.UserName; // domain\username
-            CurrUserDomain = Environment.UserDomainName;
-            CurrUserName = Environment.UserName.Remove(0, (CurrUserDomain.Length + 1));
 
             cimClassName = "Win32_ComputerSystem";
             CIMDataProvider.GetEnumeratedInstances(className: cimClassName, firstInstance: out result);
@@ -67,7 +62,7 @@ namespace xamlFrame.Lib
             }
             RAMTotalGB = RAMTotalB / 1024 / 1024 / 1024;
 
-            //Caption, Version, BuildNumber, OSArchitecture
+            // Bah humbug, Win10 doesn't put this info in WMI
             string releaseId = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ReleaseId", "").ToString();
             cimClassName = "Win32_OperatingSystem";
             CIMDataProvider.GetEnumeratedInstances(className: cimClassName, firstInstance: out result);
@@ -82,8 +77,9 @@ namespace xamlFrame.Lib
             {
                 OSRevision = releaseId + " (" + result.CimInstanceProperties["BuildNumber"].Value.ToString() + ")";
             }
-            LastBootUpTime = ManagementDateTimeConverter.ToDateTime(result.CimInstanceProperties["LastBootUpTime"].Value.ToString());
-
+            //FIXME:  Do I need ManagementDateTimeConverter? If so, when? Win7?
+            //LastBootUpTime = ManagementDateTimeConverter.ToDateTime(result.CimInstanceProperties["LastBootUpTime"].Value.ToString());
+            LastBootUpTime = result.CimInstanceProperties["LastBootUpTime"].Value<DateTime>();
 
             SystemDriveLetter = Path.GetPathRoot(Environment.SystemDirectory).Substring(0, 1);
             DriveInfo systemDrive = new DriveInfo(SystemDriveLetter);
