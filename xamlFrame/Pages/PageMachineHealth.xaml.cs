@@ -18,11 +18,11 @@ namespace xamlFrame.Pages
     /// <summary>
     /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class PageMachineHealth : Page
     {
         private NavigationService _nav;
 
-        public Page1()
+        public PageMachineHealth()
         {
             InitializeComponent();
             _nav = this.NavigationService;

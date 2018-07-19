@@ -27,25 +27,19 @@ namespace xamlFrame
 
         private void NavigationBarItem_Selected_QuickLinks(object sender, RoutedEventArgs e)
         {
-            Uri uri = new Uri("Pages/pageQuickLinks.xaml", UriKind.Relative);
+            Uri uri = new Uri("Pages/PageQuickLinks.xaml", UriKind.Relative);
             MainWindowNavFrame.NavigationService.Navigate(uri);
         }
 
         private void NavigationBarItem_Selected_MachineInfo(object sender, RoutedEventArgs e)
         {
-            Uri uri = new Uri("Pages/pageMachineInfo.xaml", UriKind.Relative);
+            Uri uri = new Uri("Pages/PageMachineInfo.xaml", UriKind.Relative);
             MainWindowNavFrame.NavigationService.Navigate(uri);
         }
 
-        private void NavigationBarItem_Selected_1(object sender, RoutedEventArgs e)
+        private void NavigationBarItem_Selected_Health(object sender, RoutedEventArgs e)
         {
-            Uri uri = new Uri("Pages/Page1.xaml", UriKind.Relative);
-            MainWindowNavFrame.NavigationService.Navigate(uri);
-        }
-
-        private void NavigationBarItem_Selected_2(object sender, RoutedEventArgs e)
-        {
-            Uri uri = new Uri("Pages/Page2.xaml", UriKind.Relative);
+            Uri uri = new Uri("Pages/PageMachineHealth.xaml", UriKind.Relative);
             MainWindowNavFrame.NavigationService.Navigate(uri);
         }
     }

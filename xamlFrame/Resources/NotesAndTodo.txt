@@ -15,7 +15,7 @@ App Behaviour:
 ** These toasts should have buttons should that do something.. but that may does not neccesarily require it to come back to main window.
 
 Pages:
-* Page 0: QuickLinks to things (web pages etc)
+* Page 0: QuickLinks to things (web pages etc)	
 * Page 1: Basic User & Machine Info (names, model, serial, etc)
 * Page 2: Machine Health
 * Page 3: No idea yet

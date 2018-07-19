@@ -49,12 +49,14 @@ namespace xamlFrame.Lib.System
 
             cimClassName = "Win32_ComputerSystem";
             CIMDataProvider.GetEnumeratedInstances(className: cimClassName, firstInstance: out result);
-            Manufacturer = result.CimInstanceProperties["Manufacturer"].Value.ToString();
-            Model = result.CimInstanceProperties["Model"].Value.ToString();
+            Manufacturer = result.CimInstanceProperties["Manufacturer"].Value<string>();
+            Model = result.CimInstanceProperties["Model"].Value<string>();
+            result.Dispose();
 
             cimClassName = "Win32_Bios";
             CIMDataProvider.GetEnumeratedInstances(className: cimClassName, firstInstance: out result);
-            MachineSerial = result.CimInstanceProperties["SerialNumber"].Value.ToString();
+            MachineSerial = result.CimInstanceProperties["SerialNumber"].Value<string>();
+            result.Dispose();
 
             cimClassName = "Win32_PhysicalMemory";
             foreach (CimInstance physicalMemory in CIMDataProvider.GetEnumeratedInstances(className: cimClassName)) {
@@ -64,11 +66,12 @@ namespace xamlFrame.Lib.System
 
             // Bah humbug, Win10 doesn't put this info in WMI
             string releaseId = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ReleaseId", "").ToString();
+
             cimClassName = "Win32_OperatingSystem";
             CIMDataProvider.GetEnumeratedInstances(className: cimClassName, firstInstance: out result);
-            OSArchitecture = result.CimInstanceProperties["OSArchitecture"].Value.ToString();
-            OSName = result.CimInstanceProperties["Caption"].Value.ToString() + " (" + OSArchitecture + ")";
-            OSVersion = result.CimInstanceProperties["Version"].Value.ToString();
+            OSArchitecture = result.CimInstanceProperties["OSArchitecture"].Value<string>();
+            OSName = result.CimInstanceProperties["Caption"].Value<string>() + " (" + OSArchitecture + ")";
+            OSVersion = result.CimInstanceProperties["Version"].Value<string>();
             if (String.IsNullOrWhiteSpace(releaseId))  // Is Not Win10...
             {
                 OSRevision = result.CimInstanceProperties["BuildNumber"].Value.ToString();
@@ -80,6 +83,7 @@ namespace xamlFrame.Lib.System
             //FIXME:  Do I need ManagementDateTimeConverter? If so, when? Win7?
             //LastBootUpTime = ManagementDateTimeConverter.ToDateTime(result.CimInstanceProperties["LastBootUpTime"].Value.ToString());
             LastBootUpTime = result.CimInstanceProperties["LastBootUpTime"].Value<DateTime>();
+            result.Dispose();
 
             SystemDriveLetter = Path.GetPathRoot(Environment.SystemDirectory).Substring(0, 1);
             DriveInfo systemDrive = new DriveInfo(SystemDriveLetter);

@@ -50,28 +50,20 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <fa:FontAwesome Icon="Magic" FontSize="25" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Column="0"/>
-                            <Label VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1">_MachineInfo</Label>
+                            <Label VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1">_Machine Information</Label>
                         </Grid>
                     </localLib:NavigationBarItem.Content>
                 </localLib:NavigationBarItem>
-                <localLib:NavigationBarItem Selected="NavigationBarItem_Selected_1" HorizontalContentAlignment="Stretch" Margin="0,0,0,0">
+                <localLib:NavigationBarItem Selected="NavigationBarItem_Selected_Health" HorizontalContentAlignment="Stretch" Margin="0,0,0,0">
                     <localLib:NavigationBarItem.Content>
-                        <Label HorizontalContentAlignment="Stretch" x:Name="SelectPage1">
-                            <StackPanel Orientation="Horizontal">
-                                <fa:FontAwesome Icon="BatteryThreeQuarters" FontSize="25" HorizontalAlignment="Center" Margin="0,0,0,0"/>
-                                <Label VerticalAlignment="Center" Margin="10,0,0,0">Select Page _1</Label>
-                            </StackPanel>
-                        </Label>
-                    </localLib:NavigationBarItem.Content>
-                </localLib:NavigationBarItem>
-                <localLib:NavigationBarItem Selected="NavigationBarItem_Selected_2" HorizontalContentAlignment="Stretch" Margin="0,0,0,0">
-                    <localLib:NavigationBarItem.Content>
-                        <Label HorizontalContentAlignment="Stretch" x:Name="SelectPage2">
-                            <StackPanel Orientation="Horizontal">
-                                <fa:FontAwesome Icon="Flask" FontSize="25" HorizontalAlignment="Center" Margin="0,0,0,0"/>
-                                <Label VerticalAlignment="Center" Margin="10,0,0,0">Select Page _2</Label>
-                            </StackPanel>
-                        </Label>
+                        <Grid Margin="5,10,5,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <fa:FontAwesome Icon="BatteryThreeQuarters" FontSize="25" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Column="0"/>
+                            <Label VerticalAlignment="Center" Margin="10,0,0,0" Grid.Column="1">Machine _Health</Label>
+                        </Grid>
                     </localLib:NavigationBarItem.Content>
                 </localLib:NavigationBarItem>
             </localLib:NavigationBar>
